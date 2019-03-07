@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.9.5)
+cmake_minimum_required(VERSION 3.6.1)
 project(rplidar_ros)
 
 # Default to C++14
@@ -19,29 +19,29 @@ FILE(GLOB RPLIDAR_SDK_SRC
 
 set(req_deps
   "rclcpp"
-#  "rosconsole"
+  "std_srvs"
   "sensor_msgs"
 )
 
-find_package(ament_cmake_auto REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_srvs REQUIRED)
+find_package(sensor_msgs REQUIRED)
 find_package(ament_cmake_ros REQUIRED)
-
-ament_auto_find_build_dependencies(REQUIRED ${req_deps})
 
 include_directories(
   ${RPLIDAR_SDK_PATH}/include
   ${RPLIDAR_SDK_PATH}/src
 )
 
-ament_auto_add_executable(rplidarNode src/node.cpp ${RPLIDAR_SDK_SRC})
+add_executable(rplidarNode src/node.cpp ${RPLIDAR_SDK_SRC})
 ament_target_dependencies(rplidarNode ${req_deps})
 
-ament_auto_add_executable(rplidarNodeClient src/client.cpp)
+add_executable(rplidarNodeClient src/client.cpp)
 ament_target_dependencies(rplidarNodeClient ${req_deps})
 
 install(
   TARGETS rplidarNode rplidarNodeClient
-  DESTINATION lib/${PROJECT_NAME}
+  DESTINATION bin
 )
 
 # TODO(hallen): port this
@@ -50,4 +50,4 @@ install(
 #   USE_SOURCE_PERMISSIONS
 # )
 
-ament_auto_package()
+ament_package()
