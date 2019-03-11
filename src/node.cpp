@@ -225,7 +225,7 @@ int main(int argc, char * argv[]) {
     node->get_parameter_or("frame_id", frame_id, std::string("laser_frame"));
     node->get_parameter_or("inverted", inverted, false);
     node->get_parameter_or("angle_compensate", angle_compensate, false);
-    node->get_parameter_or("scan_mode", scan_mode, std::string());
+    node->get_parameter_or("scan_mode", scan_mode, std::string("Boost"));
 
     ROS_INFO("RPLIDAR running on ROS package rplidar_ros. SDK Version:"RPLIDAR_SDK_VERSION"");
 
