@@ -48,7 +48,8 @@ file(GLOB AllLaunchFiles launch/*.launch.py)
 
 install(FILES ${AllLaunchFiles}
         DESTINATION share/${PROJECT_NAME}/launch)
-
+install(DIRECTORY rviz
+        DESTINATION share/${PROJECT_NAME})
 
 # TODO(hallen): port this
 # install(DIRECTORY launch rviz sdk
