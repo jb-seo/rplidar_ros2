@@ -45,9 +45,10 @@ install(
 )
 
 install(
-        DIRECTORY launch rviz
-        DESTINATION share/${PROJECT_NAME}
+  DIRECTORY launch rviz
+  DESTINATION share/${PROJECT_NAME}
 )
+
 # TODO(hallen): port this
 # install(DIRECTORY sdk
 #   USE_SOURCE_PERMISSIONS
